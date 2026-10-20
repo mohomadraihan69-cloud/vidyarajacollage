@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R/VIDYARAJA VIDYALAYA</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+:root{--green:#75b957;--dark-green:#286641;--light-green:#e6f6d9;--yellow:#fff4b8;--text:#254632}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(135deg,#fff9d9,#e6f7d9,#fff3bc);background-attachment:fixed;overflow-x:hidden;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* LOGIN PAGE */
+#loginPage{
+position:fixed;inset:0;z-index:9999;
+display:flex;align-items:center;justify-content:center;
+min-height:100vh;padding:20px;overflow-y:auto;
+background:linear-gradient(135deg,#fff9d9,#e6f7d9,#fff3bc);
+}
+.login-card{
+width:100%;max-width:430px;padding:35px 30px;
+text-align:center;background:rgba(255,255,255,.85);
+border:2px solid white;border-radius:30px;
+box-shadow:0 15px 45px rgba(40,102,65,.16);
+animation:appear .8s ease;
+}
+.login-logo{
+width:140px;height:140px;object-fit:contain;
+display:block;margin:0 auto 20px;
+animation:float 4s ease-in-out infinite;
+}
+.login-card h1{color:#286641;font-size:24px;margin-bottom:12px}
+.login-subtitle{color:#55745d;font-size:14px;line-height:1.7;margin-bottom:28px}
+.login-field{text-align:left;margin-bottom:20px}
+.login-field label{display:block;color:#286641;font-weight:bold;font-size:14px;margin-bottom:9px}
+.login-field input,.login-field select{
+width:100%;padding:14px;border:2px solid #d6e9ca;
+border-radius:12px;background:white;color:#254632;
+font-size:15px;outline:none;
+}
+.login-field input:focus,.login-field select:focus{border-color:#75b957}
+.login-button{
+width:100%;padding:15px;border:0;border-radius:30px;
+background:#286641;color:white;font-size:15px;
+font-weight:bold;cursor:pointer;transition:.3s;
+}
+.login-button:hover{background:#75b957;transform:translateY(-3px)}
+.login-error{color:#c62828;font-size:13px;margin-top:12px}
+#schoolWebsite{display:none}
+@keyframes appear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* BUBBLE BACKGROUND */
+.bubbles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bubble{position:absolute;bottom:-120px;border-radius:50%;background:rgba(117,185,87,.3);border:2px solid white;animation:floatUp linear infinite}
+.bubble:nth-child(1){left:4%;width:45px;height:45px;animation-duration:12s}
+.bubble:nth-child(2){left:15%;width:25px;height:25px;animation-duration:9s;animation-delay:2s}
+.bubble:nth-child(3){left:28%;width:65px;height:65px;animation-duration:16s;animation-delay:1s}
+.bubble:nth-child(4){left:40%;width:35px;height:35px;animation-duration:11s;animation-delay:3s}
+.bubble:nth-child(5){left:53%;width:55px;height:55px;animation-duration:14s;animation-delay:1s}
+.bubble:nth-child(6){left:65%;width:28px;height:28px;animation-duration:10s;animation-delay:4s}
+.bubble:nth-child(7){left:77%;width:70px;height:70px;animation-duration:17s;animation-delay:2s}
+.bubble:nth-child(8){left:89%;width:38px;height:38px;animation-duration:13s;animation-delay:5s}
+.bubble:nth-child(9){left:95%;width:20px;height:20px;animation-duration:8s;animation-delay:1s}
+.bubble:nth-child(10){left:34%;width:22px;height:22px;animation-duration:11s;animation-delay:6s}
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0}
+10%{opacity:.8}
+50%{transform:translateY(-55vh) translateX(35px);opacity:.7}
+100%{transform:translateY(-120vh) translateX(-25px);opacity:0}
+}
+
+/* ORIGINAL WEBSITE */
+#schoolWebsite header,#schoolWebsite main,#schoolWebsite footer{position:relative;z-index:1}
+header{background:rgba(255,255,255,.88);backdrop-filter:blur(12px);box-shadow:0 3px 20px rgba(40,102,65,.1);position:sticky;top:0;z-index:10}
+.navbar{max-width:1200px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.school-brand{display:flex;align-items:center;gap:12px}
+.school-logo{width:65px;height:65px;object-fit:contain}
+.brand-text h2{color:var(--dark-green);font-size:19px}
+.brand-text p{font-size:12px;margin-top:4px}
+nav{display:flex;align-items:center;flex-wrap:wrap;gap:20px}
+nav a{font-size:14px;font-weight:bold;transition:.3s}
+nav a:hover{color:var(--green)}
+.hero{max-width:1200px;min-height:570px;padding:90px 24px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.hero-content{flex:1}
+.welcome-tag{display:inline-block;background:#d9efc7;color:var(--dark-green);border-radius:30px;padding:10px 18px;font-size:13px;font-weight:bold;margin-bottom:25px}
+.hero h1{font-size:clamp(36px,5vw,65px);line-height:1.15;color:var(--dark-green);margin-bottom:22px}
+.hero h1 span{color:#8aab36}
+.hero p{font-size:16px;line-height:1.9;max-width:570px;margin-bottom:30px}
+.btn{display:inline-block;background:var(--dark-green);color:white;padding:14px 25px;border-radius:30px;font-weight:bold;transition:.3s;margin:5px 8px 5px 0}
+.btn:hover{background:#78a943;transform:translateY(-3px)}
+.btn-light{background:#fff2ac;color:var(--dark-green)}
+.hero-card{flex:0 1 370px;min-height:340px;background:rgba(255,255,255,.72);border:2px solid white;border-radius:35px;padding:35px;text-align:center;box-shadow:0 15px 45px rgba(40,102,65,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:float 4s ease-in-out infinite}
+.hero-card img{width:150px;height:150px;object-fit:contain;margin-bottom:20px}
+.hero-card h2{color:var(--dark-green);margin-bottom:10px}
+section{scroll-margin-top:100px}
+.section{max-width:1200px;padding:65px 24px;margin:auto}
+.section-title{text-align:center;font-size:35px;color:var(--dark-green);margin-bottom:15px}
+.section-description{text-align:center;line-height:1.8;max-width:700px;margin:0 auto 40px}
+.about-box{background:rgba(255,255,255,.78);padding:35px;border-radius:25px;line-height:2;box-shadow:0 10px 30px rgba(40,102,65,.07)}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card{padding:30px 24px;border-radius:25px;background:rgba(255,255,255,.82);border:1px solid rgba(117,185,87,.2);box-shadow:0 8px 25px rgba(40,102,65,.06);transition:.3s}
+.card:hover{transform:translateY(-7px);box-shadow:0 15px 35px rgba(40,102,65,.12)}
+.card-icon{font-size:35px;margin-bottom:15px}
+.card h3{color:var(--dark-green);margin-bottom:12px}
+.card p{line-height:1.8;font-size:14px}
+.highlight{max-width:1150px;margin:20px auto;padding:45px 25px;text-align:center;background:linear-gradient(120deg,#d8edbc,#fff0a8);border-radius:30px}
+.highlight h2{color:var(--dark-green);font-size:30px;margin-bottom:15px}
+.highlight p{line-height:1.8}
+.contact-box{background:rgba(255,255,255,.82);padding:35px;border-radius:25px;text-align:center;line-height:2}
+footer{margin-top:40px;padding:30px 20px;background:var(--dark-green);color:white;text-align:center;line-height:2}
+@media(max-width:800px){
+.navbar{flex-direction:column;padding:15px}
+nav{justify-content:center;gap:13px}
+nav a{font-size:12px}
+.hero{flex-direction:column;text-align:center;padding-top:60px}
+.hero p{margin-left:auto;margin-right:auto}
+.hero-card{width:100%;flex-basis:auto;min-height:280px}
+.card-grid{grid-template-columns:1fr}
+.section-title{font-size:29px}
+.highlight{margin:20px 15px}
+.brand-text h2{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.bubble,.hero-card,.login-logo{animation:none}*{scroll-behavior:auto}}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST PAGE: STUDENT DETAILS -->
+<div id="loginPage">
+  <div class="login-card">
+    <img src="school-logo.png" alt="School Logo" class="login-logo">
+    <h1>R/VIDYARAJA VIDYALAYA</h1>
+    <p class="login-subtitle">
+      Welcome to our school website.<br>
+      Please enter your details to continue.
+    </p>
+
+    <form id="studentForm">
+      <div class="login-field">
+        <label for="studentName">NAME</label>
+        <input type="text" id="studentName" placeholder="Enter your name" required>
+      </div>
+
+      <div class="login-field">
+        <label for="studentGrade">GRADE</label>
+        <select id="studentGrade" required>
+          <option value="">Select your grade</option>
+          <option>Grade 1</option><option>Grade 2</option>
+          <option>Grade 3</option><option>Grade 4</option>
+          <option>Grade 5</option><option>Grade 6</option>
+          <option>Grade 7</option><option>Grade 8</option>
+          <option>Grade 9</option><option>Grade 10</option>
+          <option>Grade 11</option><option>Grade 12</option>
+          <option>Grade 13</option>
+        </select>
+      </div>
+
+      <button type="submit" class="login-button">
+        ENTER SCHOOL WEBSITE →
+      </button>
+      <p id="loginError" class="login-error"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ORIGINAL WEBSITE - SHOWN AFTER ENTER -->
+<div id="schoolWebsite">
+
+<div class="bubbles" aria-hidden="true">
+  <div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div>
+  <div class="bubble"></div><div class="bubble"></div>
+</div>
+
+<header>
+  <div class="navbar">
+    <a href="#home" class="school-brand">
+      <img src="school-logo.png" alt="School Logo" class="school-logo" onerror="this.style.display='none'">
+      <div class="brand-text">
+        <h2>R/VIDYARAJA VIDYALAYA</h2>
+        <p>Knowledge • Discipline • Success</p>
+      </div>
+    </a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="welcome-tag">WELCOME TO OUR SCHOOL</span>
+    <h1>Learn Today,<br><span>Lead Tomorrow.</span></h1>
+    <p>Welcome to our school official website. We are committed to providing quality education, developing student talents and building a brighter future for every student.</p>
+    <a href="#about" class="btn">Discover Our School</a>
+    <a href="#contact" class="btn btn-light">Contact Us</a>
+  </div>
+  <div class="hero-card">
+    <img src="school-logo.png" alt="School Emblem" onerror="this.style.display='none'">
+    <h2>OUR SCHOOL</h2>
+    <p>A place to learn, grow and achieve greatness.</p>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About Our School</h2>
+  <p class="section-description">Building knowledge, character and a successful future.</p>
+  <div class="about-box">
+    <p>Our school is dedicated to creating a friendly, safe and inspiring learning environment for all students. We encourage academic excellence, creativity, teamwork and good values.</p>
+    <p>Through the support of our teachers, parents and community, we aim to help every student discover their talents and reach their full potential.</p>
+  </div>
+</section>
+
+<section class="section" id="facilities">
+  <h2 class="section-title">Our Facilities</h2>
+  <p class="section-description">Explore the opportunities available to our students.</p>
+  <div class="card-grid">
+    <article class="card"><div class="card-icon">📚</div><h3>Library</h3><p>A place for reading, research and discovering new knowledge.</p></article>
+    <article class="card"><div class="card-icon">💻</div><h3>Computer Education</h3><p>Developing digital skills and preparing students for the modern world.</p></article>
+    <article class="card"><div class="card-icon">⚽</div><h3>Sports</h3><p>Encouraging teamwork, fitness, discipline and sportsmanship.</p></article>
+  </div>
+</section>
+
+<section class="section" id="events">
+  <h2 class="section-title">School Events</h2>
+  <p class="section-description">School activities, celebrations and memorable moments.</p>
+  <div class="card-grid">
+    <article class="card"><div class="card-icon">🎓</div><h3>Academic Activities</h3><p>Add details about academic competitions, exhibitions and educational programmes.</p></article>
+    <article class="card"><div class="card-icon">🎉</div><h3>School Celebrations</h3><p>Add details about school anniversaries, cultural events and special celebrations.</p></article>
+    <article class="card"><div class="card-icon">🏆</div><h3>Achievements</h3><p>Share students' achievements, awards and important school milestones.</p></article>
+  </div>
+</section>
+
+<section class="highlight">
+  <h2>Our Vision for the Future</h2>
+  <p>Inspiring students to learn with confidence, act with kindness and achieve their dreams.</p>
+</section>
+
+<section class="section" id="contact">
+  <h2 class="section-title">Contact Our School</h2>
+  <p class="section-description">Get in touch with us for school information.</p>
+  <div class="contact-box">
+    <h3>R/VIDYARAJA VIDYALAYA</h3>
+    <p>📍 Address: RATHNAPURA BATUGEDHARA</p>
+    <p>☎ Telephone: Add your school telephone number</p>
+    <p>✉ Email: Add your official school email</p>
+    <p>🌐 Official School Website</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <h3>R/VIDYARAJA VIDYALAYA</h3>
+  <p>Knowledge • Discipline • Success</p>
+  <p>&copy; <span id="year"></span> R/VIDYARAJA VIDYALAYA. All rights reserved.</p>
+  <p>Designed with care for our school community.</p>
+</footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("studentForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("studentName").value.trim();
+  const grade = document.getElementById("studentGrade").value;
+  const error = document.getElementById("loginError");
+
+  if (!name || !grade) {
+    error.textContent = "Please enter your name and grade.";
+    return;
+  }
+
+  error.textContent = "";
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("schoolWebsite").style.display = "block";
+  window.scrollTo(0, 0);
+});
+</script>
+
+</body>
+</html>
